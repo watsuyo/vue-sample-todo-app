@@ -38,9 +38,22 @@
       "@vue/prettier",
       "@vue/typescript"
     ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "semi": false
+        }
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "interface-name": false,
+      "ordered-imports": false,
+      "object-literal-sort-keys": false,
+      "no-consecutive-blank-lines": false
     }
   },
   "browserslist": [
