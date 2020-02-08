@@ -3,6 +3,7 @@
     <p>{{ todo.id }}:</p>
     <p>{{ todo.title }}</p>
     <p>{{ todo.isDone }}</p>
+    <p @click="deleteTodo">×</p>
   </div>
 </template>
 
@@ -15,6 +16,12 @@ export default Vue.extend({
     todo: {
       type: Object as PropType<Todo>,
       required: true
+    }
+  },
+
+  methods: {
+    deleteTodo() {
+      this.$emit('deleteTodo', this.todo)
     }
   }
 })
