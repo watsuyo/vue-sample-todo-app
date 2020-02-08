@@ -17,9 +17,10 @@ export default {
     return {
       todoList: [
         {
-          id: 1,
+          uid: 'bp0m4jl4a08',
           title: '7時に起きる',
-          isDone: false
+          isDone: false,
+          createdAt: new Date()
         }
       ]
     }
