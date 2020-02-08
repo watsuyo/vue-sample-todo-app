@@ -2,7 +2,11 @@
   <div>
     <h1>Todoリスト</h1>
     <InputTodo @addTodo="addTodo($event)"></InputTodo>
-    <TodoItemList class="todo-item-list" :todoList="todoList" />
+    <TodoItemList
+      class="todo-item-list"
+      :todoList="todoList"
+      @deleteTodo="deleteTodo($event)"
+    />
   </div>
 </template>
 
@@ -10,6 +14,7 @@
 import Vue from 'vue'
 import InputTodo from '@/components/InputTodo.vue'
 import TodoItemList from '@/components/TodoItemList.vue'
+import { Todo } from '../../types'
 
 export default Vue.extend({
   components: {
@@ -31,10 +36,12 @@ export default Vue.extend({
 
   methods: {
     addTodo(newTodo: string) {
-      console.log(newTodo)
       const newIndex = this.todoList.length + 1
-      console.log({ id: newIndex, title: newTodo, isDone: false })
       this.todoList.push({ id: newIndex, title: newTodo, isDone: false })
+    },
+
+    deleteTodo(selectedTodo: Todo) {
+      this.todoList = this.todoList.filter(todo => todo.id !== selectedTodo.id)
     }
   }
 })
