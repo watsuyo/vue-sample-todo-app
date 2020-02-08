@@ -23,6 +23,7 @@ export default Vue.extend({
   methods: {
     addTodo(newTodo: string) {
       this.$emit('addTodo', this.newTodo)
+      this.newTodo = ''
     }
   }
 })

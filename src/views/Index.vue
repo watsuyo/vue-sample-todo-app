@@ -16,6 +16,13 @@ import InputTodo from '@/components/InputTodo.vue'
 import TodoItemList from '@/components/TodoItemList.vue'
 import { Todo } from '../../types'
 
+interface Data {
+  uid: string
+  title: string
+  isDone: boolean
+  createdAt: Date | null
+}
+
 export default Vue.extend({
   components: {
     TodoItemList,
@@ -26,9 +33,10 @@ export default Vue.extend({
     return {
       todoList: [
         {
-          id: 1,
+          uid: 'bp0m4jl4a08',
           title: '7時に起きる',
-          isDone: false
+          isDone: false,
+          createdAt: new Date()
         }
       ]
     }
@@ -36,12 +44,18 @@ export default Vue.extend({
 
   methods: {
     addTodo(newTodo: string) {
-      const newIndex = this.todoList.length + 1
-      this.todoList.push({ id: newIndex, title: newTodo, isDone: false })
+      this.todoList.push({
+        uid: Math.floor(Math.random() * 100000000000000000).toString(36),
+        title: newTodo,
+        isDone: false,
+        createdAt: new Date()
+      })
     },
 
     deleteTodo(selectedTodo: Todo) {
-      this.todoList = this.todoList.filter(todo => todo.id !== selectedTodo.id)
+      this.todoList = this.todoList.filter(
+        todo => todo.uid !== selectedTodo.uid
+      )
     }
   }
 })
