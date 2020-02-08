@@ -1,6 +1,5 @@
 <template>
   <div class="todo-item">
-    <p>{{ todo.id }}:</p>
     <p>{{ todo.title }}</p>
     <p>{{ todo.isDone }}</p>
   </div>
