@@ -1,16 +1,20 @@
 <template>
   <div>
     <h1>Todoリスト</h1>
+    <InputTodo @addTodo="addTodo($event)"></InputTodo>
     <TodoItemList class="todo-item-list" :todoList="todoList" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import InputTodo from '@/components/InputTodo.vue'
 import TodoItemList from '@/components/TodoItemList.vue'
 
-export default {
+export default Vue.extend({
   components: {
-    TodoItemList
+    TodoItemList,
+    InputTodo
   },
 
   data() {
@@ -23,8 +27,17 @@ export default {
         }
       ]
     }
+  },
+
+  methods: {
+    addTodo(newTodo: string) {
+      console.log(newTodo)
+      const newIndex = this.todoList.length + 1
+      console.log({ id: newIndex, title: newTodo, isDone: false })
+      this.todoList.push({ id: newIndex, title: newTodo, isDone: false })
+    }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
