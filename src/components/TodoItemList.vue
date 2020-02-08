@@ -13,6 +13,7 @@ export default Vue.extend({
   components: {
     TodoItem
   },
+
   props: {
     todoList: {
       type: Array as PropType<Todo[]>,
