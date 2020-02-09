@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Todoリスト</h1>
-    <InputTodo @addTodo="addTodo($event)"></InputTodo>
+    <InputTodo @addTodo="addTodo($event)" />
     <TodoItemList
       class="todo-item-list"
       :todoList="todoList"
