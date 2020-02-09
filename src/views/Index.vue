@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-component />
     <h1>Todoリスト</h1>
     <TodoItemList class="todo-item-list" :todoList="todoList" />
   </div>
@@ -7,12 +8,12 @@
 
 <script>
 import TodoItemList from '@/components/TodoItemList.vue'
-
+import HeaderComponent from '@/components/HeaderComponent.vue'
 export default {
   components: {
-    TodoItemList
+    TodoItemList,
+    HeaderComponent
   },
-
   data() {
     return {
       todoList: [
