@@ -1,7 +1,12 @@
 <template>
   <div class="todo-item">
-    <p>{{ todo.title }}</p>
-    <p>{{ todo.isDone }}</p>
+    <input type="checkbox" v-model="todo.isDone" />
+    <p v-if="todo.isDone">
+      <s>{{ todo.title }}</s>
+    </p>
+    <p v-else>
+      {{ todo.title }}
+    </p>
     <p @click="deleteTodo">×</p>
   </div>
 </template>
