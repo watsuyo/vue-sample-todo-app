@@ -1,11 +1,13 @@
 <template>
   <div>
-    <TodoItem
-      v-for="(todo, key) in todoList"
-      :key="key"
-      :todo="todo"
-      @deleteTodo="deleteTodo($event)"
-    />
+    <div>
+      <TodoItem
+        v-for="(todo, key) in todoList"
+        :key="key"
+        :todo="todo"
+        @deleteTodo="deleteTodo($event)"
+      />
+    </div>
   </div>
 </template>
 
