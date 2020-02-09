@@ -7,6 +7,8 @@
 </template>
 
 <style scoped>
+.header {
+}
 .navbar {
   background-color: #b50099;
 }
