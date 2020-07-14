@@ -29,10 +29,10 @@ export default {
     }
   },
   methods: {
-    addTodoItem(todoItem) {
+    addTodoItem(todoTitleText) {
       const newTodoItem = {
         uid: 'bp0m4jl4a08',
-        title: todoItem,
+        title: todoTitleText,
         isDone: false,
         createdAt: new Date()
       }
