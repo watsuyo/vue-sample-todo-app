@@ -2,6 +2,7 @@
   <div class="todo-item">
     <input type="checkbox" v-model="todo.isDone" />
     <span :class="[todo.isDone ? 'todo-done' : '']">{{ todo.title }}</span>
+    <button @click="deleteTodo(todo.uid)">削除</button>
   </div>
 </template>
 
@@ -14,6 +15,11 @@ export default Vue.extend({
     todo: {
       type: Object as PropType<Todo>,
       required: true
+    }
+  },
+  methods: {
+    deleteTodo(uid: string) {
+      this.$emit('deletetodo', uid)
     }
   }
 })

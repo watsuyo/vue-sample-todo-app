@@ -1,7 +1,12 @@
 <template>
   <div>
     <p>
-      <TodoItem v-for="(todo, key) in todoList" :key="key" :todo="todo" />
+      <TodoItem
+        v-for="(todo, key) in todoList"
+        :key="key"
+        :todo="todo"
+        @deletetodo="deleteTodo($event)"
+      />
     </p>
   </div>
 </template>
@@ -19,6 +24,11 @@ export default Vue.extend({
     todoList: {
       type: Array as PropType<Todo[]>,
       required: true
+    }
+  },
+  methods: {
+    deleteTodo(uid: string) {
+      this.$emit('deletetodo', uid)
     }
   }
 })

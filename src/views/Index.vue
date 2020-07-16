@@ -2,7 +2,11 @@
   <div>
     <h1>Todoリスト</h1>
     <TodoItemForm @addtodoitem="addTodoItem($event)"></TodoItemForm>
-    <TodoItemList class="todo-item-list" :todoList="todoList" />
+    <TodoItemList
+      class="todo-item-list"
+      :todoList="todoList"
+      @deletetodo="deleteTodo($event)"
+    />
   </div>
 </template>
 
@@ -38,6 +42,9 @@ export default {
         createdAt: new Date()
       }
       this.todoList.push(newTodoItem)
+    },
+    deleteTodo(uid) {
+      this.todoList = this.todoList.filter(item => item.uid !== uid)
     }
   }
 }
