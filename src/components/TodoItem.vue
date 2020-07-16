@@ -1,7 +1,7 @@
 <template>
   <div class="todo-item">
-    <p>{{ todo.title }}</p>
-    <p>{{ todo.isDone }}</p>
+    <input type="checkbox" v-model="todo.isDone" />
+    <span :class="[todo.isDone ? 'todo-done' : '']">{{ todo.title }}</span>
   </div>
 </template>
 
@@ -22,5 +22,8 @@ export default Vue.extend({
 <style scoped lang="scss">
 .todo-item {
   display: flex;
+}
+.todo-done {
+  text-decoration: line-through;
 }
 </style>

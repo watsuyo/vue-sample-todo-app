@@ -30,8 +30,9 @@ export default {
   },
   methods: {
     addTodoItem(todoTitleText) {
+      const uid = Math.floor(Math.random() * 100000000000000000).toString(36)
       const newTodoItem = {
-        uid: 'bp0m4jl4a08',
+        uid: uid,
         title: todoTitleText,
         isDone: false,
         createdAt: new Date()
