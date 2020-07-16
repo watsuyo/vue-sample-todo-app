@@ -1,16 +1,19 @@
 <template>
   <div>
     <h1>Todoリスト</h1>
+    <TodoItemForm @addtodoitem="addTodoItem($event)"></TodoItemForm>
     <TodoItemList class="todo-item-list" :todoList="todoList" />
   </div>
 </template>
 
 <script>
 import TodoItemList from '@/components/TodoItemList.vue'
+import TodoItemForm from '@/components/TodoItemForm.vue'
 
 export default {
   components: {
-    TodoItemList
+    TodoItemList,
+    TodoItemForm
   },
 
   data() {
@@ -23,6 +26,17 @@ export default {
           createdAt: new Date()
         }
       ]
+    }
+  },
+  methods: {
+    addTodoItem(todoTitleText) {
+      const newTodoItem = {
+        uid: 'bp0m4jl4a08',
+        title: todoTitleText,
+        isDone: false,
+        createdAt: new Date()
+      }
+      this.todoList.push(newTodoItem)
     }
   }
 }
