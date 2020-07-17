@@ -2,15 +2,21 @@
   <div>
     <h1>Todoリスト</h1>
     <TodoItemForm @addtodoitem="addTodoItem($event)"></TodoItemForm>
-    <TodoItemList class="todo-item-list" :todoList="todoList" />
+    <TodoItemList
+      class="todo-item-list"
+      :todoList="todoList"
+      @deletetodo="deleteTodo($event)"
+    />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { PropType } from 'vue'
 import TodoItemList from '@/components/TodoItemList.vue'
 import TodoItemForm from '@/components/TodoItemForm.vue'
+import { Todo } from '../../types'
 
-export default {
+export default Vue.extend({
   components: {
     TodoItemList,
     TodoItemForm
@@ -29,18 +35,23 @@ export default {
     }
   },
   methods: {
-    addTodoItem(todoTitleText) {
-      const uid = Math.floor(Math.random() * 100000000000000000).toString(36)
-      const newTodoItem = {
+    addTodoItem(todoTitleText: string) {
+      const uid: string = Math.floor(
+        Math.random() * 100000000000000000
+      ).toString(36)
+      const newTodoItem: Todo = {
         uid: uid,
         title: todoTitleText,
         isDone: false,
         createdAt: new Date()
       }
       this.todoList.push(newTodoItem)
+    },
+    deleteTodo(uid: string) {
+      this.todoList = this.todoList.filter(item => item.uid !== uid)
     }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
